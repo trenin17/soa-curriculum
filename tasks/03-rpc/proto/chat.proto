@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package chat;
+
+service Handler {
+    rpc Enroll (EnrollRequest) returns (EnrollResponse) {}
+    rpc GetRole (Username) returns (Role) {}
+    rpc PollEvents (Empty) returns (Event) {}
+    rpc Vote (VoteCandidate) returns (Empty) {}
+}
+  
+message EnrollRequest {
+    string user = 1;
+}
+
+message EnrollResponse {
+    string message = 1;
+}
+
+message Empty {
+}
+
+message Event {
+    int32 n_event = 1;
+    repeated string players = 2;
+    repeated string active = 3;
+}
+
+message VoteCandidate {
+    string name = 1;
+}
+
+message Role {
+    string role = 1;
+}
+
+message Username {
+    string name = 1;
+}
+
